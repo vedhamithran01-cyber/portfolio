@@ -1,0 +1,141 @@
+/* Custom Theme Variables */
+:root {
+  --void-black: #0c0e1a;
+  --deep-void: #05060f;
+  --slate-900: #1e293b;
+  --neon-blue: #00f2ff;
+  --neon-purple: #bc13fe;
+  --neon-pink: #ff007f;
+}
+
+/* Base Styles */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--void-black);
+  background-image: radial-gradient(circle at 50% 0%, #1e293b 0%, #0c0e1a 100%);
+  color: #f8fafc;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+/* Animations */
+@keyframes floatContinuous {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-15px) rotate(1deg); }
+}
+
+@keyframes floatHero {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-25px) rotate(1deg); }
+}
+
+@keyframes scanline {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+@keyframes blink {
+  from, to { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@keyframes floatUp {
+  0% { opacity: 0; transform: translateY(0) scale(0.5); }
+  10%, 90% { opacity: 0.2; }
+  100% { opacity: 0; transform: translateY(-200px) scale(0.5); }
+}
+
+.animate-float-slow {
+  animation: floatContinuous 8s ease-in-out infinite;
+}
+
+.animate-float-medium {
+  animation: floatContinuous 6s ease-in-out infinite;
+}
+
+.animate-float-fast {
+  animation: floatContinuous 4s ease-in-out infinite;
+}
+
+.animate-scanline {
+  animation: scanline 8s linear infinite;
+}
+
+.hero-float {
+  animation: floatHero 9s ease-in-out infinite;
+}
+
+/* Utilities */
+.glass-morphism {
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+}
+
+.bg-grid-pattern {
+  background-image: 
+    linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.shadow-neon-blue {
+  box-shadow: 0 0 15px rgba(0, 242, 255, 0.4);
+}
+
+.shadow-neon-purple {
+  box-shadow: 0 0 15px rgba(188, 19, 254, 0.4);
+}
+
+.shadow-neon-pink {
+  box-shadow: 0 0 15px rgba(255, 0, 127, 0.4);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #05070a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #334155;
+}
+
+/* Floating Code Fragments */
+.floating-code {
+  position: absolute;
+  pointer-events: none;
+  font-family: monospace;
+  font-size: 0.875rem;
+  color: rgba(0, 242, 255, 0.3);
+  white-space: nowrap;
+  z-index: -10;
+}
+
+/* Neon Text Colors (for use with Tailwind) */
+.text-neon-blue { color: var(--neon-blue); }
+.text-neon-purple { color: var(--neon-purple); }
+.text-neon-pink { color: var(--neon-pink); }
+.border-neon-blue { border-color: var(--neon-blue); }
+.border-neon-purple { border-color: var(--neon-purple); }
+.border-neon-pink { border-color: var(--neon-pink); }
+.bg-neon-blue { background-color: var(--neon-blue); }
+.bg-neon-purple { background-color: var(--neon-purple); }
+.bg-neon-pink { background-color: var(--neon-pink); }
+
+.selection\:bg-neon-blue::selection {
+  background-color: var(--neon-blue);
+  color: var(--void-black);
+}
