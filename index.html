@@ -47,24 +47,43 @@
     </div>
 
     <!-- Navbar -->
-    <nav class="fixed top-0 left-0 w-full z-50 px-8 py-6 flex justify-between items-center glass-morphism border-b border-white/5">
-        <div class="text-3xl font-black bg-gradient-to-r from-neon-blue to-neon-purple bg-clip-text text-transparent flex items-center gap-2">
-            <i data-lucide="terminal" class="text-neon-blue w-7 h-7"></i>
+    <nav class="fixed top-0 left-0 w-full z-50 px-6 md:px-12 py-6 flex justify-between items-center glass-morphism border-b border-white/5">
+        <div class="text-2xl md:text-3xl font-black bg-gradient-to-r from-neon-blue to-neon-purple bg-clip-text text-transparent flex items-center gap-2">
+            <i data-lucide="terminal" class="text-neon-blue w-6 h-6 md:w-7 md:h-7"></i>
             VE.
         </div>
-        <div class="flex gap-8 text-sm font-bold tracking-widest uppercase text-slate-400">
+        
+        <!-- Desktop Links -->
+        <div class="hidden md:flex gap-8 text-sm font-bold tracking-widest uppercase text-slate-400">
             <a href="#projects" class="hover:text-neon-blue transition-all hover:tracking-[0.2em]">Projects</a>
             <a href="#skills" class="hover:text-neon-purple transition-all hover:tracking-[0.2em]">Skills</a>
             <a href="#contact" class="hover:text-neon-pink transition-all hover:tracking-[0.2em]">Contact</a>
         </div>
+
+        <!-- Mobile Menu Button -->
+        <button id="menu-toggle" class="md:hidden text-slate-300 hover:text-white transition-colors">
+            <i data-lucide="menu" id="menu-icon" class="w-7 h-7"></i>
+        </button>
     </nav>
+
+    <!-- Mobile Menu Drawer -->
+    <div id="mobile-menu" class="fixed inset-0 z-40 bg-void-black/95 backdrop-blur-xl translate-x-full transition-transform duration-500 md:hidden flex flex-col items-center justify-center gap-8 pt-20">
+        <a href="#projects" class="mobile-nav-link text-3xl font-black tracking-tighter text-slate-400 hover:text-neon-blue transition-all">PROJECTS</a>
+        <a href="#skills" class="mobile-nav-link text-3xl font-black tracking-tighter text-slate-400 hover:text-neon-purple transition-all">SKILLS</a>
+        <a href="#contact" class="mobile-nav-link text-3xl font-black tracking-tighter text-slate-400 hover:text-neon-pink transition-all">CONTACT</a>
+        <div class="mt-8 flex gap-6">
+            <a href="https://github.com/vedhamithran01-cyber" target="_blank" class="text-slate-500 hover:text-white"><i data-lucide="github" class="w-6 h-6"></i></a>
+            <a href="#" class="text-slate-500 hover:text-white"><i data-lucide="linkedin" class="w-6 h-6"></i></a>
+        </div>
+    </div>
+
 
     <main class="relative z-10">
         <!-- Hero Section -->
         <section class="relative min-h-screen flex flex-col items-center justify-center pt-20 px-8 overflow-hidden">
             <div class="hero-float">
                 <div class="relative">
-                    <h1 class="text-7xl md:text-9xl font-black text-center tracking-tighter mb-6 relative z-10">
+                    <h1 class="text-5xl sm:text-7xl md:text-9xl font-black text-center tracking-tighter mb-6 relative z-10">
                         Vedhamithran <span class="text-neon-blue">E</span>
                     </h1>
                     <div class="absolute -top-10 -right-10 text-neon-blue/20 rotate-12 pointer-events-none">
@@ -73,11 +92,11 @@
                 </div>
             </div>
 
-            <p class="text-2xl md:text-3xl text-slate-300 font-semibold mb-10 text-center max-w-4xl leading-tight">
+            <p class="text-xl md:text-3xl text-slate-300 font-semibold mb-10 text-center max-w-4xl leading-tight px-4">
                 Architecting Digital Realms with the <span class="text-neon-purple">MERN Stack</span> & Beyond
             </p>
 
-            <div class="max-w-2xl text-center text-slate-400 text-lg mb-14 leading-relaxed">
+            <div class="max-w-2xl text-center text-slate-400 text-base md:text-lg mb-14 leading-relaxed px-6">
                 Developing robust, scalable applications with a focus on modern user experiences. 
                 Merging technical precision with creative problem-solving to build the future of the web.
             </div>
@@ -369,9 +388,64 @@
                     </a>
                 </div>
 
-                <p id="copyright" class="text-slate-600 text-[10px] tracking-[0.5em] uppercase font-black"></p>
+                <p id="copyright" class="text-slate-600 text-[10px] tracking-[0.5em] uppercase font-black mt-8"></p>
             </div>
         </footer>
+
+        <!-- Messaging System Section -->
+        <section id="messaging" class="py-32 px-6 relative">
+            <div class="max-w-3xl mx-auto">
+                <div class="glass-morphism p-8 md:p-12 rounded-[3rem] border border-white/10 relative overflow-hidden group">
+                    <!-- Subtle Background Glow -->
+                    <div class="absolute -right-20 -bottom-20 w-64 h-64 bg-neon-blue/10 rounded-full blur-[80px] group-hover:bg-neon-blue/20 transition-all"></div>
+                    
+                    <div class="relative z-10">
+                        <h2 class="text-4xl md:text-5xl font-black text-white mb-10 tracking-tight flex items-center gap-4">
+                            <i data-lucide="send" class="text-neon-blue w-8 h-8"></i>
+                            Messaging System
+                        </h2>
+
+                        <form id="contact-form" action="https://api.web3forms.com/submit" method="POST" class="space-y-8">
+                            <!-- Web3Forms Access Key -->
+                            <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
+                            <input type="hidden" name="subject" value="New Portfolio Message">
+                            <input type="hidden" name="from_name" value="Portfolio Visitor">
+                            
+                            <div class="space-y-2">
+                                <label for="name" class="text-sm font-bold text-slate-400 uppercase tracking-widest ml-1">Your Identity (Name)</label>
+                                <input type="text" name="name" id="name" required 
+                                    class="w-full bg-white/5 border-b-2 border-white/10 px-4 py-4 text-white focus:outline-none focus:border-neon-blue transition-all rounded-t-xl"
+                                    placeholder="Enter your name">
+                            </div>
+
+                            <div class="space-y-2">
+                                <label for="email" class="text-sm font-bold text-slate-400 uppercase tracking-widest ml-1">Hyperlink Address (Email)</label>
+                                <input type="email" name="email" id="email" required 
+                                    class="w-full bg-white/5 border-b-2 border-white/10 px-4 py-4 text-white focus:outline-none focus:border-neon-blue transition-all rounded-t-xl"
+                                    placeholder="your@email.com">
+                            </div>
+
+                            <div class="space-y-2">
+                                <label for="message" class="text-sm font-bold text-slate-400 uppercase tracking-widest ml-1">Transmission Message</label>
+                                <textarea name="message" id="message" required rows="4"
+                                    class="w-full bg-white/5 border-b-2 border-white/10 px-4 py-4 text-white focus:outline-none focus:border-neon-blue transition-all rounded-t-xl resize-none"
+                                    placeholder="Type your message here..."></textarea>
+                            </div>
+
+                            <button type="submit" id="submit-btn" 
+                                class="w-full md:w-auto px-12 py-5 bg-white text-black font-black uppercase tracking-[0.2em] rounded-2xl hover:bg-neon-blue transition-all duration-300 flex items-center justify-center gap-3 group/btn">
+                                Transmit Message
+                                <i data-lucide="arrow-right" class="w-5 h-5 group-hover/btn:translate-x-1 transition-transform"></i>
+                            </button>
+                        </form>
+                        
+                        <!-- Status Message -->
+                        <div id="form-status" class="mt-6 text-center font-bold uppercase tracking-widest text-sm hidden"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </main>
 
     <script src="script.js"></script>
